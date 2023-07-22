@@ -12,18 +12,8 @@ const UsersTable = () => {
     }).catch((e) => {console.log(e)});
   }, []);
 
-  return <table>
-  <tr>
-    <th colSpan='3' className='topnav'>Rendered By React JS | Client side rendered</th>
-  </tr>
-  {reactData.map((user, index) => (
-    <tr>
-      <td>{user.name}</td>
-      <td>{user.username}</td>
-      <td>{user.email}</td>
-    </tr>
-  ))}
-</table>
+
+ 
 }
 
 export default UsersTable;
