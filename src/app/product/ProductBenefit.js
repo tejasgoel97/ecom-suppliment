@@ -30,8 +30,7 @@ const productBenefits = [
 function ProductBenefit() {
     return (
         <>
-            <div className="mt-10 border border-gray-200 rounded-lg">
-
+            <div className="mt-10 border border-gray-200 rounded-lg hidden md:block">
                 <div className="p-8">
                     <div className="font-bold text-xl mb-2">Product Benefits</div>
                     <p className="text-gray-700 text-base">Helps in Muscle Building</p>

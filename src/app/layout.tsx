@@ -1,10 +1,15 @@
-'use client'
-import React from 'react'
-import './globals.css'
-import { AuthContextProvider } from '@/context/AuthContext'
+"use client";
+import React from "react";
+import "./globals.css";
+import { AuthContextProvider } from "@/context/AuthContext";
+import { CartProvider } from "@/context/CartContext";
 
-export default function RootLayout({ children }:{
-  children: React.ReactNode
+import Navbar from "./Navbar/Navbar";
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -15,9 +20,12 @@ export default function RootLayout({ children }:{
       <head />
       <body>
         <AuthContextProvider>
-          {children}
+          <CartProvider>
+            <Navbar />
+            {children}
+          </CartProvider>
         </AuthContextProvider>
       </body>
     </html>
-  )
+  );
 }

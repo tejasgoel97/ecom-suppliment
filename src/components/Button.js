@@ -22,7 +22,6 @@ const Button = (props) => {
         onSubmit()
 
     }
-
     return <button type="submit" className="min-w-[100px] px-1 py-1 flex justify-center items-center border rounded border-red-400 cursor-pointer text-red-500 hover:bg-red-500 hover:text-white" onClick={onClick} style={style}>
     {title}
   </button>

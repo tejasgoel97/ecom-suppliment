@@ -1,30 +1,23 @@
-import UsersTable from './UsersTable'
+import React from 'react';
+import Item from './Item';
 
-export async function getUsers() {
-    const data = await fetch('https://jsonplaceholder.typicode.com/users');
-    const users = await data.json();
-    return users
-  }
-export default async function Home() {
-    const users = await getUsers()
+const App = () => {
+  // Some sample items
+  const items = [
+    { id: 1, name: 'Item 1', variant: 'A', subvariant: '1', price: 10 },
+    { id: 1, name: 'Item 1', variant: 'A', subvariant: '2', price: 12 },
+    { id: 2, name: 'Item 2', variant: 'B', subvariant: '1', price: 15 },
+  ];
+
   return (
-    <>
-      
-        <UsersTable/>
-      <br/>
-      
-      <table>
-        <tr>
-          <th colSpan='3' className='topnav'>Rendered By Next JS | Server side rendered</th>
-        </tr>
-        {users.map((user, index) => (
-          <tr>
-            <td>{user.name}</td>
-            <td>{user.username}</td>
-            <td>{user.email}</td>
-          </tr>
+      <div>
+        <h1>My Online Shop</h1>
+        {items.map((item) => (
+          <Item key={`${item.id}-${item.variant}-${item.subvariant}`} {...item} />
         ))}
-      </table>
-    </>
-  )
-}
+        <hr />
+      </div>
+  );
+};
+
+export default App;

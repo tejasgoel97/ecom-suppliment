@@ -8,7 +8,7 @@ function DeliveryServices() {
             <div className="mt-10 border border-gray-200 rounded-lg">
                 <div className="p-8">
                     <div className="font-bold text-xl mb-2">Delivery & Services</div>
-                    <div className=' border border-gray-200 rounded-lg w-96'>
+                    <div className=' border border-gray-200 rounded-lg'>
                         <div className='flex justify-between p-5'>
                             <input className="" id="grid-first-name" type="text" placeholder="Enter Pincode" style={{ outline: 'none' }} />
                             <div>Check</div>

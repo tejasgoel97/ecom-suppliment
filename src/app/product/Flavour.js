@@ -26,7 +26,7 @@ function Flavour() {
                 <div>dbc</div>
                 <div className='mr-3 font-bold text-3xl '>Flavour</div>
             </div>
-            <div className="flex flex-wrap gap-3 mt-12">
+            <div className="flex flex-wrap gap-2 mt-12">
                 {
                     Flavours.map((flavour) => {
                         return (
