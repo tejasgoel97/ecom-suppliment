@@ -19,9 +19,9 @@ async function fetchProducts(category){
     const data = await fetchCategory(category);
     const subCategories = data?.subcategory
     const {result} = await getDocumentsbyFilter("products", "mainCategory", category)
-    console.log(result)
+    console.log("hi",result)
     
-    return <Content />
+    return <Content category={category} products={result} catData={data}/>
 }
 
 export default Page;

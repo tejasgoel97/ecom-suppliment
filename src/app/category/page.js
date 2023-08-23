@@ -1,17 +1,22 @@
-import getDocument from "@/firebase/getData";
+import Content from "./Content"
 
-async function fetchCategories(){
+import getDocument, {getDocumentsbyFilter} from "@/firebase/getData";
+
+async function fetchCategory(category){
     const {result , error} = await getDocument("metaData", "categories")
-    console.log(result);
-    return result.categories;
+    return result.categories
 }
 
 
- const Page = async () => {
 
-    const data = await fetchCategories()
+ const Page = async ({params}) => {
+    const category = decodeURIComponent(params.catName)
+    const data = await fetchCategory(category);
+    const subCategories = data?.subcategory
+    // const {result} = await getDocumentsbyFilter("products", "mainCategory", category)
+    // console.log("hi",result)
     
-    return <div>{JSON.stringify(data)}</div>
+    return <Content category={category} products={[]} catData={data}/>
 }
 
 export default Page;

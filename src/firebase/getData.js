@@ -40,7 +40,7 @@ export async function getDocumentsbyFilter(collectionName, field, value){
         const filteredData = [];
         querySnapshot.forEach((doc) => {
             console.log(doc.data())
-          filteredData.push(doc.data());
+          filteredData.push({...doc.data(), id:doc.id});
         });
     
         result = filteredData

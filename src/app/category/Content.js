@@ -10,16 +10,15 @@ const Content = (props) => {
   Regular use of Garcinia Tablets may help to reduce appetite, improve metabolism, and promote weight loss.
   These tablets are easy to use and can be incorporated into a healthy lifestyle.
   Discover the benefits of Garcinia Tablets and start your weight management journey today!`;
-  console.log(catData);
-  const subCategories = catData.subCategories;
-  console.log(subCategories);
-  console.log(products)
+  console.log("sadsad",catData);
+
   return (
       <ProductList
-        heading={category}
+        heading={"All categories"}
         longDescription={longDescription}
-        subForms={subCategories}
+        subForms={catData}
         products={products}
+        type="ALL_CATEGORY"
       />
   );
 };

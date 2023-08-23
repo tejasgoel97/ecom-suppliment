@@ -1,81 +1,105 @@
-"use client";
+// "use client";
 
 import getDocument from "@/firebase/getData";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+// import { useEffect, useState } from "react";
+// import { useRouter } from "next/navigation";
 import Content from "./Content"
-import Breadcrumbs from "@/components/Breadcrumbs"
+// import Breadcrumbs from "@/components/Breadcrumbs"
 
-const Product = ({ params }) => {
-  const [err, setErr] = useState(null);
-  const [product, setProduct] = useState({});
-  const [variant, setVariant] = useState("");
-  const [subVariant, setSubVariant] = useState("");
-
-  const router = useRouter();
+const Product = async ({ params }) => {
+  // const [err, setErr] = useState(null);
+  // const [product, setProduct] = useState({});
+  // const [variant, setVariant] = useState("");
+  // const [subVariant, setSubVariant] = useState("");
+  let variant = null;
+  let subVariant = null
+  let err = null;
+  let product = null
+  let SP = null
+  let MRP = null
+  // const router = useRouter();
 
   const slug = params.slug;
+  let id=slug[0]
   async function getData() {
-    let { result, error } = await getDocument("products", slug[0]);
-    console.log({result, error})
-    setErr(err);
-    setProduct(result);
+    let { result, error } = await getDocument("products", id);
+    // console.log({result, error})
+    err = (error);
+    product = (result);
+
   }
 
-  useEffect(() => {
-    getData();
-  }, []);
+  // useEffect(() => {
+    await getData();
+  // }, []);
 
-  useEffect(() => {
+  // useEffect(() => {
     if (!product?.productName) return;
     if (slug.length === 1) {
       console.log("hi there");
-      console.log(product);
-      const variant = product.variants[0].name;
-      const subVariant = product.variants[0].subvariants[0].name;
-      router.push(`/product/${slug[0]}/${variant}/${subVariant}`);
+      // console.log(product);
+      variant = product.variants[0].name;
+      subVariant = product.variants[0].subvariants[0].name;
+      SP = product.variants[0].subvariants[0].SP
+      MRP = product.variants[0].subvariants[0].MRP
+      // router.push(`/product/${slug[0]}/${variant}/${subVariant}`);
     }
     if(slug.length === 2){
-      let variant = decodeURIComponent(slug[1])
-      let subVariant = ""
+      variant = decodeURIComponent(slug[1])
+      subVariant = ""
       const variantObject = product.variants.find((v)=>v.name === variant)
       if(!variantObject){
         variant = product.variants[0].name;
         subVariant = product.variants[0].subvariants[0].name;
+        SP = product.variants[0].subvariants[0].SP
+        MRP = product.variants[0].subvariants[0].MRP
       }else{
         subVariant = variantObject.subvariants[0].name
+        SP = variantObject.subvariants[0].SP
+        MRP = variantObject.subvariants[0].MRP
+        
       }
       const route = `/product/${slug[0]}/${variant}/${subVariant}`
-      router.push(route)
+      // router.push(route)
 
-      console.log(variantObject.subvariants[0].name)
+      // console.log(variantObject.subvariants[0].name)
     }
     if(slug.length >2){
       console.log("2")
-      let variant = decodeURIComponent(slug[1])
-      let subVariant = decodeURIComponent(slug[2]);
+      variant = decodeURIComponent(slug[1])
+      subVariant = decodeURIComponent(slug[2]);
       const variantObject = product.variants.find((v)=>v.name === variant);
-      console.log(variantObject)
+      // console.log(variantObject)
       if(!variantObject){
         variant = product.variants[0].name;
         subVariant = product.variants[0].subvariants[0].name;
+        SP = product.variants[0].subvariants[0].SP
+        MRP = product.variants[0].subvariants[0].MRP
+        const route = `/product/${slug[0]}/${variant}/${subVariant}`
+        // router.push(route)
       }
       else{
         const subVariantObject = variantObject.subvariants.find((sv)=> sv.name === subVariant)
-        console.log({subVariantObject})
+        // console.log({subVariantObject})
         if(!subVariantObject){
+          variant = product.variants[0].name;
           subVariant = product.variants[0].subvariants[0].name;
+          const route = `/product/${slug[0]}/${variant}/${subVariant}`;
+          SP = product.variants[0].subvariants[0].SP
+          MRP = product.variants[0].subvariants[0].MRP
+        // router.push(route)
         }
         else{
           subVariant = subVariantObject.name
-          return
+          SP = subVariantObject.SP
+          MRP = subVariantObject.MRP
+          
           
         }
       }
-      const route = `/product/${slug[0]}/${variant}/${subVariant}`
-      router.push(route)
+      
     }
-  }, [product]);
+  // }, [product]);
 
   // if (err) {
   //   return <div>unable to fetch document</div>;
@@ -83,10 +107,14 @@ const Product = ({ params }) => {
   // if (!product.productName) {
   //   return <div>Loading</div>;
   // }
-
+  
+  console.log(product)
+    if(!product || !variant || !subVariant){
+      return <div>Ho Daata</div>
+    }
   return <div className="container bg-white max-w-5xl mx-auto p-4">
     {/* <Breadcrumbs crumbs={5}/> */}
-    <Content product={product}/>
+    <Content product={product} variant={variant} subVariant={subVariant} SP={SP} MRP={MRP} id={id}/>
   </div>
 };
 

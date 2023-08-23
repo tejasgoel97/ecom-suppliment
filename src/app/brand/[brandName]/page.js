@@ -11,9 +11,8 @@ async function fetchSubCatData(subCategory){
 
 const Page = async ({params}) => {
     const brandName = decodeURIComponent(params.brandName);
-    const {result} = await getDocumentsbyFilter("products", "brand", brandName)
-    const brandData = await fetchSubCatData(brandName)
-    
+    const {result} = await getDocumentsbyFilter("products", "brand", brandName);
+    const brandData = await fetchSubCatData(brandName);
     console.log({result})
     console.log({brandData})
 

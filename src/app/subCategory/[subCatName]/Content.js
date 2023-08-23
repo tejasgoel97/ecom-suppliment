@@ -3,24 +3,24 @@
 import ProductList from "@/container/ProductList/ProductList";
 
 const Content = (props) => {
-  const { products, category, catData } = props;
+  const { products, subCategory, subCatData } = props;
 
   let longDescription = `Garcinia Cambogia Tablets are a natural weight management supplement derived from a tropical fruit.
   These tablets contain Hydroxy Citric Acid (HCA), which is believed to block an enzyme that helps the body store fat.
   Regular use of Garcinia Tablets may help to reduce appetite, improve metabolism, and promote weight loss.
   These tablets are easy to use and can be incorporated into a healthy lifestyle.
   Discover the benefits of Garcinia Tablets and start your weight management journey today!`;
-  console.log(catData);
-  const subCategories = catData.subCategories;
-  console.log(subCategories);
-  console.log(products)
+  const subCategories = subCatData.subCatName;
+
   return (
+    <div>
       <ProductList
-        heading={category}
+        heading={subCategory}
         longDescription={longDescription}
-        subForms={subCategories}
+        subForms={[]}
         products={products}
       />
+    </div>
   );
 };
 

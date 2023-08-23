@@ -9,7 +9,7 @@ const cartReducer = (state, action) => {
         (item) =>
           item.id === action.payload.id &&
           item.variant === action.payload.variant &&
-          item.subvariant === action.payload.subvariant
+          item.subVariant === action.payload.subVariant
       );
 
       if (existingItemIndex !== -1) {
@@ -26,7 +26,7 @@ const cartReducer = (state, action) => {
           !(
             item.id === action.payload.id &&
             item.variant === action.payload.variant &&
-            item.subvariant === action.payload.subvariant
+            item.subVariant === action.payload.subVariant
           )
       );
 
@@ -34,7 +34,7 @@ const cartReducer = (state, action) => {
       return state.map((item) =>
         item.id === action.payload.id &&
         item.variant === action.payload.variant &&
-        item.subvariant === action.payload.subvariant
+        item.subVariant === action.payload.subVariant
           ? { ...item, quantity: item.quantity + 1 }
           : item
       );
@@ -43,7 +43,7 @@ const cartReducer = (state, action) => {
       return state.map((item) =>
         item.id === action.payload.id &&
         item.variant === action.payload.variant &&
-        item.subvariant === action.payload.subvariant
+        item.subVariant === action.payload.subVariant
           ? {
               ...item,
               quantity: item.quantity > 1 ? item.quantity - 1 : item.quantity,
@@ -59,7 +59,8 @@ const cartReducer = (state, action) => {
 const CartProvider = ({ children }) => {
     const [cart, dispatch] = useReducer(cartReducer, [], () => {
         const storedCart = localStorage.getItem('cart');
-        return storedCart ? JSON.parse(storedCart) : [];
+        console.log({storedCart})
+        return storedCart? JSON.parse(storedCart) : [];
       });
 
       useEffect(() => {

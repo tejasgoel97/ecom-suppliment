@@ -2,6 +2,7 @@ import React from 'react';
 import Search from './Search';
 import IconButton from "@/components/IconButton"
 import { SearchIcon, ShoppingCartIcon, UserIcon } from '@heroicons/react/solid';
+import Link from 'next/link';
 
 
 const logo = "https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/flipkart-plus_8d85f4.png"
@@ -27,7 +28,9 @@ const Navbar = () => {
       {/* Login button and cart button on the right */}
       <div className="flex gap-4">
       <IconButton icon={<SearchIcon className="h-5 w-5" />} label="Search" />
-      <IconButton icon={<ShoppingCartIcon className="h-5 w-5" />} label="Cart" />
+      <Link href="/cart">
+        <IconButton icon={<ShoppingCartIcon className="h-5 w-5" />} label="Cart" />
+      </Link>
       <IconButton icon={<UserIcon className="h-5 w-5" />} label="Profile" />
     </div>
     </nav>
