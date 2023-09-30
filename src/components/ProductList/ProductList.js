@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useState } from "react";
 // import Select from 'react-dropdown-select';
+import StarRating from "@/components/StarRating"
 
 const options = [
   {
@@ -109,7 +109,7 @@ function ProductPage(props) {
   const router = useRouter();
 
   return (
-    <div className="container max-w-5xl mx-auto">
+    <div className="container max-w-5xl mx-auto p-4">
       <div className="mb-5">
         <img
           src="https://img4.hkrtcdn.com/10922/bnr_1092113_o.jpg"
@@ -131,11 +131,11 @@ function ProductPage(props) {
         </p>
       </div>
 
-      <div className="grid grid-cols-3 md:grid-cols-8 gap-8 my-10">
+      <div className="grid grid-cols-3 md:grid-cols-8 gap-8">
         {subForms.map((item) => {
           return (
             <div
-              className="text-center cursor-pointer"
+              className="text-center cursor-pointer col-span-1"
               onClick={() => {
                 if(type === "ALL_CATEGORY"){
                   return router.push(`/category/${item.name}`)
@@ -160,62 +160,43 @@ function ProductPage(props) {
                 }}
               /> */}
               <img src={item.imgUrl || item.imageUrl} className="rounded-full shadow-lg" />
-              <p className="mt-2 text-xs text-#49586e">{item.name}</p>
+              <p className="mt-2  text-#49586e">{item.name}</p>
             </div>
           );
         })}
       </div>
 
       <div className="flex justify-between my-5">
-        <div className="text-#aeb1bd font-medium text-lg">(67 items)</div>
+        <div className="text-#aeb1bd font-medium text-lg">({products.length} items)</div>
         {/* <Select options={options} onChange={(values) => setValues(values)} /> */}
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 my-8">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 sm:grid-cols-2">
         {products.map((i) => {
           console.log(i);
           const productUrl = `/product/${i.id}`
+          const productName = `${i.productName}, ${i.variants[0].name}`
+          const SP = i.variants[0].subvariants[0].SP
+          const MRP = i.variants[0].subvariants[0].MRP
           return (
-            <>
-            <Link href={productUrl}>
+            
+            <Link href={productUrl} className="col-span-1">
               <div className="relative w-full max-w-lg shadow cursor-pointer rounded-t-lg rounded-b-lg hover:shadow-2xl mx-auto" >
                 <div className="bg-gray-200 rounded-t-lg">
-                  <div className="absolute right-0 p-3">
-                    <div className="border border-green-500 p-1">
-                      <div className="h-2 w-2 rounded-full bg-green-500 text-center"></div>
-                    </div>
-                  </div>
                   <div className="flex justify-center overflow-hidden">
-                    <img className="" src={i.featureImage} />
+                    <img className="" src={i.featureImage} style={{width:"auto", height:"100%"}}/>
                   </div>
                 </div>
                 <div className="px-5 py-5 border border-gray-200 rounded-b-lg ">
                   <div className="md:h-40 h-44">
-                    <h5 className="text-base leading-loose font-semibold text-gray-600 mb-2">
-                      {i.productName}
+                    <h5 className="text-base font-semibold text-gray-600 mb-2">
+                        {productName}
                     </h5>
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex gap-4">
-                        <div className="bg-teal-500 px-2 rounded text-white flex">
-                          {i.reviewNumber}{" "}
-                          <svg
-                            aria-hidden="true"
-                            className="w-5 h-4 mt-1 text-white"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <title>First star</title>
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                          </svg>
-                        </div>
-                        <div className="align-center">14 Reviews</div>
-                      </div>
-                    </div>
+                    <StarRating rating={3.7}/>
                     <div className="flex gap-3 mb-3">
-                      <div>{i.productNewPrice}</div>
+                      <div>{SP}</div>
                       <div className="line-through align-middle text-#aeb1bd">
-                        {i.productPrice}
+                        {MRP}
                       </div>
                       <div className="text-green-500">{i.productDiscount}</div>
                     </div>
@@ -229,7 +210,7 @@ function ProductPage(props) {
                 </div>
               </div>
         </Link>
-            </>
+
           );
         })}
       </div>

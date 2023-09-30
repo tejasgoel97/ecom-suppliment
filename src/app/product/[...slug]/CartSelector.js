@@ -1,9 +1,9 @@
 "use client";
-import { useCart } from "@/context/CartContext";
+import {useCartContext } from "@/context/CartContext";
 
 const CartSelector = (props) => {
   const { id, variant, subVariant, name, SP, MRP, imgUrl } = props;
-  const { cart, dispatch } = useCart();
+  const { cart, dispatch } = useCartContext();
 
   const cartItem = cart.find(
     (item) =>
@@ -84,7 +84,7 @@ const CartSelector = (props) => {
             >
               <span>-</span>
             </div>
-            <div className="flex items-center justify-center bg-[#d8d8d8] text-[#00b5b7] h-full px-3 w-2/4">
+            <div className="flex items-center justify-center bg-[#d8d8d8] text-primary h-full px-3 w-2/4">
               {quantity}
             </div>
             <div

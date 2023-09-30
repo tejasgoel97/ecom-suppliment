@@ -45,7 +45,7 @@ const ImageSelector = (props) => {
           {allImages.map((i, index) => (
             <div
               key={index}
-              className={` ${selectedImageIndex === index ? 'border-2 border-[#00b5b7]' : ''}`}
+              className={` ${selectedImageIndex === index ? 'border-2 border-primary' : ''}`}
             >
               <img
                 className="h-full "
@@ -57,8 +57,8 @@ const ImageSelector = (props) => {
         </div>
       </div>
       <div className='md:col-span-5'>
-        <div className='bg-[#f7f7f7] items-center p-3'>
-          <img className='mix-blend-multiply' src={allImages[selectedImageIndex].imgUrl} />
+        <div className=' items-center p-3'>
+          <img className='' src={allImages[selectedImageIndex].imgUrl} />
         </div>
         <div className='border rounded-lg border-[#dbdee9] mt-16 hidden md:block'>
           <div className='py-3 px-5'>

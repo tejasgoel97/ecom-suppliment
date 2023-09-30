@@ -1,68 +1,40 @@
+'use client'
+
 import React from 'react';
-import { HomeIcon } from '@heroicons/react/solid';
+import { ChevronRightIcon } from '@heroicons/react/20/solid';
+import Link from 'next/link';
 
 const Breadcrumbs = (props) => {
 
-  const {crumbs} = props;
-
+  const { crumbs } = props;
+  console.log(crumbs)
   const category = crumbs.category;
   const subCategory = crumbs.subCategory;
   const brand = crumbs.brand;
-  
-
+  const product = crumbs.product;
+  const RightIcon = () => <ChevronRightIcon
+    className="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"
+    aria-hidden="true"
+  />
   return (
     
-<nav class="flex" aria-label="Breadcrumb">
-  <ol class="inline-flex items-center space-x-1 md:space-x-3">
-    <li class="inline-flex items-center">
-      <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-        <svg class="w-3 h-3 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-          <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
-        </svg>
-        Home
-      </a>
-    </li>
-    {category && 
-    <li>
-    <div class="flex items-center">
-      <svg class="w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-      </svg>
-      <a href="#" class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">Projects</a>
-    </div>
-  </li>}
-  {subCategory && 
-    <li>
-    <div class="flex items-center">
-      <svg class="w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-      </svg>
-      <a href="#" class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">Projects</a>
-    </div>
-  </li>}
-  {brand && 
-    <li>
-    <div class="flex items-center">
-      <svg class="w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-      </svg>
-      <a href="#" class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">Projects</a>
-    </div>
-  </li>}
-    {/* {breadcrumbs.map((bc)=>{
-      return <li>
-      <div class="flex items-center">
-        <svg class="w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-        </svg>
-        <a href="#" class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">Projects</a>
-      </div>
-    </li>
-    })} */}
-    
-  </ol>
-</nav>
+    <nav className="flex items-center space-x-2 text-gray-500 text-sm my-3">
+      <Link href="/" className="hover:text-gray-600">Home</Link>
+      <RightIcon />
+      {category && <>
+        <Link href={`/category/${category}`} className="hover:text-gray-600">{category}</Link>
+        <RightIcon />
+      </>
+        }
+      {subCategory && <>
+        <Link href={`/subCategory/${subCategory}`} className="hover:text-gray-600">{subCategory}</Link>
+      <RightIcon />
+      </>}
+      <span className="font-semibold">{product}</span>
+    </nav>
   );
 };
+
+
 
 export default Breadcrumbs;

@@ -3,7 +3,7 @@ import Content from "./Content"
 import getDocument, {getDocumentsbyFilter} from "@/firebase/getData";
 
 async function fetchCategory(category){
-    const {result , error} = await getDocument("metaData", "categories")
+    const {result , error} = await getDocument("metaData", "categories");
     return result.categories
 }
 

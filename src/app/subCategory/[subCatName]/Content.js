@@ -1,6 +1,6 @@
 "use client";
 
-import ProductList from "@/container/ProductList/ProductList";
+import ProductList from "@/components/ProductList/ProductList";
 
 const Content = (props) => {
   const { products, subCategory, subCatData } = props;

@@ -15,8 +15,8 @@ const VariantSelector = (props) => {
         <img src="https://static1.hkrtcdn.com/hknext/static/media/pdp/weight.svg" />
         <span className='text-[#1c1c28] text-lg font-semibold'>Weight</span>
         <div className='flex cursor-pointer'>
-          <div className='cursor-pointer text-xs font-medium bg-white rounded-l py-1 px-3 border border-[#00b5b7] text-[#77777e]'>KG</div>
-          <div className='cursor-pointer text-xs font-medium bg-[#00b5b7] rounded-r py-1 px-3 border border-[#00b5b7] text-white'>LB</div>
+          <div className='cursor-pointer text-xs font-medium bg-white rounded-l py-1 px-3 border border-primary text-[#77777e]'>KG</div>
+          <div className='cursor-pointer text-xs font-medium bg-primary rounded-r py-1 px-3 border border-primary text-white'>LB</div>
         </div>
       </div>
       <div className='flex flex-wrap gap-2 items-center text-center cursor-pointer'>

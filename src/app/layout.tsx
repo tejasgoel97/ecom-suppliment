@@ -3,8 +3,9 @@ import React from "react";
 import "./globals.css";
 import { AuthContextProvider } from "@/context/AuthContext";
 import { CartProvider } from "@/context/CartContext";
+import { OrderProvider } from "@/context/OrderContext";
 
-import Navbar from "./Navbar/Navbar";
+import Navbar from "@/components/Navbar/index";
 
 export default function RootLayout({
   children,
@@ -21,8 +22,11 @@ export default function RootLayout({
       <body>
         <AuthContextProvider>
           <CartProvider>
+            <OrderProvider>
+
             <Navbar />
             {children}
+            </OrderProvider>
           </CartProvider>
         </AuthContextProvider>
       </body>

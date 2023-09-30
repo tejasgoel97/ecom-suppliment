@@ -4,7 +4,7 @@ import getDocument from "@/firebase/getData";
 // import { useEffect, useState } from "react";
 // import { useRouter } from "next/navigation";
 import Content from "./Content"
-// import Breadcrumbs from "@/components/Breadcrumbs"
+import Breadcrumbs from "@/components/Breadcrumbs"
 
 const Product = async ({ params }) => {
   // const [err, setErr] = useState(null);
@@ -108,12 +108,12 @@ const Product = async ({ params }) => {
   //   return <div>Loading</div>;
   // }
   
-  console.log(product)
     if(!product || !variant || !subVariant){
       return <div>Ho Daata</div>
     }
+    console.log(product)
   return <div className="container bg-white max-w-5xl mx-auto p-4">
-    {/* <Breadcrumbs crumbs={5}/> */}
+    <Breadcrumbs crumbs={{category:product.mainCategory, subCategory:product.subCategory, product:product.productName}}/>
     <Content product={product} variant={variant} subVariant={subVariant} SP={SP} MRP={MRP} id={id}/>
   </div>
 };

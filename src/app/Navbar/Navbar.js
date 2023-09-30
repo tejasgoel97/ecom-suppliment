@@ -31,7 +31,10 @@ const Navbar = () => {
       <Link href="/cart">
         <IconButton icon={<ShoppingCartIcon className="h-5 w-5" />} label="Cart" />
       </Link>
-      <IconButton icon={<UserIcon className="h-5 w-5" />} label="Profile" />
+      <Link href="/logout">
+
+        <IconButton icon={<UserIcon className="h-5 w-5" />} label="Profile"/>
+      </Link>
     </div>
     </nav>
     </div>

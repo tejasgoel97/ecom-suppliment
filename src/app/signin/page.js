@@ -1,10 +1,14 @@
 'use client'
 import React, { useState } from 'react';
+import signIn from "@/firebase/auth/signin"
+import { useRouter } from 'next/navigation';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const router = useRouter()
+
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -16,7 +20,7 @@ function LoginForm() {
     setError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Reset any previous error messages
@@ -25,14 +29,18 @@ function LoginForm() {
     // Replace this with your login logic
     if (username.trim() === '' || password.trim() === '') {
       setError('Please enter both username and password.');
-    } else if (username !== 'demo' || password !== 'password') {
-      setError('Invalid username or password.');
-    } else {
-      alert(`Logged in as ${username}`);
-      // Clear the form after successful login (optional)
-      setUsername('');
-      setPassword('');
     }
+      try {
+        alert(`Logged in as ${username}`);
+        // Clear the form after successful login (optional)
+        setUsername('');
+        setPassword('');
+        await signIn(username, password)
+        router.back()
+      } catch (error) {
+        setError('Invalid username or password.');
+      }
+
   };
 
   return (

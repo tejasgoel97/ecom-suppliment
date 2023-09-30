@@ -28,12 +28,7 @@ export async function getDocumentsbyFilter(collectionName, field, value){
     try {
         const db = getFirestore();
         const collectionRef = collection(db, collectionName);
-    
-        // Replace 'field' and 'value' with your desired filter criteria
-        // const field = 'name';
-        // const value = 'John';
-    
-        // Use the query function to apply filters.
+
         const q = query(collectionRef, where(field, '==', value));
         const querySnapshot = await getDocs(q);
     
@@ -47,9 +42,32 @@ export async function getDocumentsbyFilter(collectionName, field, value){
       } catch (error) {
         console.error('Error retrieving filtered data:', error);
         error = error
-        // throw error;
       }
       return {error, result}
+}
 
 
+export async function getDocuments(collectionName){
+
+  let result = null;
+  let error = null;
+  try {
+      const db = getFirestore();
+      const collectionRef = collection(db, collectionName);
+
+      const q = query(collectionRef);
+      const querySnapshot = await getDocs(q);
+  
+      const filteredData = [];
+      querySnapshot.forEach((doc) => {
+          console.log(doc.data())
+        filteredData.push({...doc.data(), id:doc.id});
+      });
+  
+      result = filteredData
+    } catch (error) {
+      console.error('Error retrieving filtered data:', error);
+      error = error
+    }
+    return {error, result}
 }

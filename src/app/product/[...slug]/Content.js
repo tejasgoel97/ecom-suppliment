@@ -24,7 +24,6 @@ function ProductNewComponent(props) {
     const allImages = [{imgUrl:product.featureImage, altText:product.featureImage}, ...product.images]
     console.log(allImages)
     const productDisplayName = `${product.productName}, ${variant}, ${subVariant}`
-    
   return (<>
     <div className='grid grid-cols-1 md:grid-cols-12 gap-5'>
      <ImageSelector allImages={allImages}/>
@@ -32,11 +31,11 @@ function ProductNewComponent(props) {
       <div className='md:col-span-6'>
         <div className=''>
           <div className='flex flex-col'>
-            <div className='text-[#00b5b7] font-semibold text-sm'>Whey Proteins</div>
+            <div className='text-primary font-semibold text-sm'>Whey Proteins</div>
             <div className='text-[#1c1c28] font-semibold text-2xl leading-normal'>{productDisplayName}</div>
             <div className='flex items-center gap-2 my-1 text-[#77777e] font-medium -mt-1 mb-3'>
-              By <span className='text-[#00b5b7] font-semibold'>MuscleBlaze</span>
-              <img className='pt-1' src="https://static1.hkrtcdn.com/hknext/static/media/pdp/arrow-right-blue.svg" />
+              By <span className='text-primary font-semibold'>MuscleBlaze</span>
+              <img className='pt-1 -z-20' src="https://static1.hkrtcdn.com/hknext/static/media/pdp/arrow-right-blue.svg" />
             </div>
             <div className='flex items-center mb-3 gap-2'>
               <div className='flex'>
@@ -79,13 +78,13 @@ function ProductNewComponent(props) {
             <div className='flex flex-col gap-3 mt-4 mb-5'>
               <div className='flex items-center p-4 border rounded-lg border-[#dbdee9] gap-4'>
                 <img src="https://img5.hkrtcdn.com/payment_img/bank/icici.jpg" />
-                <div className='text-[#000] text-sm font-medium'>Flat Rs 300/- cashback on a minimum transaction value of Rs 3,000/-  <label className="text-[#00b5b7]">T&C.</label></div>
+                <div className='text-[#000] text-sm font-medium'>Flat Rs 300/- cashback on a minimum transaction value of Rs 3,000/-  <label className="text-primary">T&C.</label></div>
               </div>
             </div>
             <div className='flex flex-col gap-3 mt-4 mb-5'>
               <div className='flex items-center p-4 border rounded-lg border-[#dbdee9] gap-4'>
                 <img src="https://img5.hkrtcdn.com/payment_img/bank/icici.jpg" />
-                <div className='text-[#000] text-sm font-medium'>Flat Rs 500/- cashback on a minimum transaction value of Rs 5,000/-  <label className="text-[#00b5b7]">T&C.</label></div>
+                <div className='text-[#000] text-sm font-medium'>Flat Rs 500/- cashback on a minimum transaction value of Rs 5,000/-  <label className="text-primary">T&C.</label></div>
               </div>
             </div>
           </div>
