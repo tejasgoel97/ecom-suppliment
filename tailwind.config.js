@@ -10,8 +10,9 @@ module.exports = {
     extend: {
       colors: {
         // Define your custom colors here
-        primary: '#3490dc', // Example primary color
-        secondary: '#ffed4a', // Example secondary color
+        primary: '#146C94', // Example primary color
+        "primary-lite": '#AFD3E2', // Example primary color
+        secondary: '#F6F1F1', // Example secondary color
         // Add more custom colors as needed
       },
     },

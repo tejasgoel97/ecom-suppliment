@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { getDocuments } from "@/firebase/getData";
+import OrderCard from "./OrderCard"
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -25,9 +26,14 @@ const MyOrders = () => {
   };
 
   return (
-    <div className="container mx-auto max-w-5xl bg-gray-100 my-4 p-4">
+    <div className="container mx-auto max-w-5xl  my-4 p-4 ">
       <h1 className="text-3xl font-semibold mb-6">My Orders</h1>
-      {orders.map((order, index) => (
+        {orders.map((order, index) => {
+            return <div>
+                <OrderCard order={order} index={index}/>
+                </div>
+        })}
+      {/* {orders.map((order, index) => (
         <div key={index} className="bg-white rounded-lg shadow-md p-6 mb-6">
           <div className="flex justify-between items-center">
             <p className="text-xl font-semibold">Order ID: {order.orderId}</p>
@@ -101,7 +107,7 @@ const MyOrders = () => {
             </div>
           )}
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };

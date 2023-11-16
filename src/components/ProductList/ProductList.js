@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { useState } from "react";
 // import Select from 'react-dropdown-select';
-import StarRating from "@/components/StarRating"
+import ProductCard from "@/components/Card/ProductCard"
 
 const options = [
   {
@@ -137,7 +137,7 @@ function ProductPage(props) {
             <div
               className="text-center cursor-pointer col-span-1"
               onClick={() => {
-                if(type === "ALL_CATEGORY"){
+                if (type === "ALL_CATEGORY") {
                   return router.push(`/category/${item.name}`)
                 }
                 router.push(`/subCategory/${item.name}`)
@@ -179,37 +179,8 @@ function ProductPage(props) {
           const SP = i.variants[0].subvariants[0].SP
           const MRP = i.variants[0].subvariants[0].MRP
           return (
-            
-            <Link href={productUrl} className="col-span-1">
-              <div className="relative w-full max-w-lg shadow cursor-pointer rounded-t-lg rounded-b-lg hover:shadow-2xl mx-auto" >
-                <div className="bg-gray-200 rounded-t-lg">
-                  <div className="flex justify-center overflow-hidden">
-                    <img className="" src={i.featureImage} style={{width:"auto", height:"100%"}}/>
-                  </div>
-                </div>
-                <div className="px-5 py-5 border border-gray-200 rounded-b-lg ">
-                  <div className="md:h-40 h-44">
-                    <h5 className="text-base font-semibold text-gray-600 mb-2">
-                        {productName}
-                    </h5>
-                    <StarRating rating={3.7}/>
-                    <div className="flex gap-3 mb-3">
-                      <div>{SP}</div>
-                      <div className="line-through align-middle text-#aeb1bd">
-                        {MRP}
-                      </div>
-                      <div className="text-green-500">{i.productDiscount}</div>
-                    </div>
-                  </div>
-                  <div className="">
-                    <button className="flex items-center gap-3 justify-center border rounded-lg border-red-200 bg-red-100 p-3 w-full hover:bg-red-500 hover:text-white">
-                      <img src="https://static1.hkrtcdn.com/hknext/static/media/common/cartNew.svg" />
-                      Add to Cart
-                    </button>
-                  </div>
-                </div>
-              </div>
-        </Link>
+
+            <ProductCard product = {i}/>
 
           );
         })}

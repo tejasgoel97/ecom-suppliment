@@ -11,7 +11,9 @@ const PaymentPage = () => {
 
     async function placeOrder(){
         console.log(currentOrder)
-       const {result, error} =  await addData("orders",currentOrder)
+        let finalOrderObj = {...currentOrder, createdAt: new Date(), status:"CREATED"}
+        
+       const {result, error} =  await addData("orders",finalOrderObj)
        console.log(result, error)
         window.alert("Order created")
     }

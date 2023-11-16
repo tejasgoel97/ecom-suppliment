@@ -11,7 +11,7 @@ const StarRating = ({ rating }) => {
   const fullStars = Math.floor(clampedRating);
   for (let i = 0; i < fullStars; i++) {
     stars.push(
-      <StarIcon key={i} className="h-5 w-5 text-yellow-500" />
+      <StarIcon key={i} className="h-5 w-5 text-primary" />
     );
   }
 

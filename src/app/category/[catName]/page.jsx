@@ -9,10 +9,6 @@ async function fetchCategory(category){
      
     return categoryObject;
 }
-async function fetchProducts(category){
-
-}
-
 
  const Page = async ({params}) => {
     const category = decodeURIComponent(params.catName)

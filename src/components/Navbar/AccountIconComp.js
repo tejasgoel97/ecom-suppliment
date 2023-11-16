@@ -1,7 +1,15 @@
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { UserIcon, ArrowLeftOnRectangleIcon, UserCircleIcon, TableCellsIcon } from '@heroicons/react/24/solid'
+import logout from "@/firebase/auth/logout"
+
 export default function Example() {
+
+  async function handleLogout(){
+    console.log("logging Out")
+    const { result, error } = logout();
+  }
+
   return (
     
       <Menu as="div" className="relative inline-block text-left">
@@ -123,6 +131,7 @@ export default function Example() {
                     className={`${
                       active ? 'bg-primary text-white' : 'text-gray-900'
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    onClick={handleLogout}
                   >
                     {active ? (
                       <ArrowLeftOnRectangleIcon
@@ -135,7 +144,7 @@ export default function Example() {
                         aria-hidden="true"
                       />
                     )}
-                    Delete
+                    Logout
                   </button>
                 )}
               </Menu.Item>

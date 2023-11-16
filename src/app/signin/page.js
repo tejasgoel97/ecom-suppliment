@@ -2,12 +2,17 @@
 import React, { useState } from 'react';
 import signIn from "@/firebase/auth/signin"
 import { useRouter } from 'next/navigation';
+import { useAuthContext } from "@/context/AuthContext";
+
+
 
 function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter()
+  const { user } = useAuthContext()
+
 
 
   const handleUsernameChange = (e) => {
@@ -42,9 +47,12 @@ function LoginForm() {
       }
 
   };
-
+  React.useEffect(() => {
+    if (user !== null) router.push("/")
+  }, [user])
+i
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-indigo-500 to-blue-500">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-primary to-primary-lite">
       <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
         <h2 className="text-3xl font-semibold mb-6 text-center text-gray-800">Login</h2>
         <form onSubmit={handleSubmit}>
@@ -58,7 +66,7 @@ function LoginForm() {
               placeholder="Enter your username"
               value={username}
               onChange={handleUsernameChange}
-              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-primary"
               required
             />
           </div>
@@ -72,14 +80,14 @@ function LoginForm() {
               placeholder="Enter your password"
               value={password}
               onChange={handlePasswordChange}
-              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-primary"
               required
             />
           </div>
           <div className="text-center mb-4">
             <button
               type="submit"
-              className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              className="w-full bg-primary hover:bg-primary-lite text-white font-semibold py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               Login
             </button>

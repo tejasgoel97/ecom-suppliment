@@ -60,7 +60,7 @@ export async function getDocuments(collectionName){
   
       const filteredData = [];
       querySnapshot.forEach((doc) => {
-          console.log(doc.data())
+          // console.log(doc.data())
         filteredData.push({...doc.data(), id:doc.id});
       });
   

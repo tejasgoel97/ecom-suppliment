@@ -3,6 +3,7 @@ import React from 'react'
 import ImageSelector from "./ImagesSelector"
 import VariantSelector from "./VariantSelector"
 import CartSelector from "./CartSelector"
+import StarRating from '@/components/StarRating'
 
 
 
@@ -24,6 +25,7 @@ function ProductNewComponent(props) {
     const allImages = [{imgUrl:product.featureImage, altText:product.featureImage}, ...product.images]
     console.log(allImages)
     const productDisplayName = `${product.productName}, ${variant}, ${subVariant}`
+    const discountPercent = ((MRP - SP)/MRP * 100).toFixed(2)
   return (<>
     <div className='grid grid-cols-1 md:grid-cols-12 gap-5'>
      <ImageSelector allImages={allImages}/>
@@ -31,31 +33,22 @@ function ProductNewComponent(props) {
       <div className='md:col-span-6'>
         <div className=''>
           <div className='flex flex-col'>
-            <div className='text-primary font-semibold text-sm'>Whey Proteins</div>
+            <div className='text-primary font-semibold text-sm'>{product.subCategory}</div>
             <div className='text-[#1c1c28] font-semibold text-2xl leading-normal'>{productDisplayName}</div>
             <div className='flex items-center gap-2 my-1 text-[#77777e] font-medium -mt-1 mb-3'>
-              By <span className='text-primary font-semibold'>MuscleBlaze</span>
+              By <span className='text-primary font-semibold'>{product.brand.value}</span>
               <img className='pt-1 -z-20' src="https://static1.hkrtcdn.com/hknext/static/media/pdp/arrow-right-blue.svg" />
             </div>
             <div className='flex items-center mb-3 gap-2'>
-              <div className='flex'>
-                <img src="https://static1.hkrtcdn.com/hknext/static/media/pdp/blue_filled_star.svg" />
-                <img src="https://static1.hkrtcdn.com/hknext/static/media/pdp/blue_filled_star.svg" />
-                <img src="https://static1.hkrtcdn.com/hknext/static/media/pdp/blue_filled_star.svg" />
-                <img src="https://static1.hkrtcdn.com/hknext/static/media/pdp/blue_filled_star.svg" />
-                <img src="https://static1.hkrtcdn.com/hknext/static/media/pdp/blue_filled_star.svg" />
-              </div>
-              <div className='flex gap-1'>
-                <div className='text-[#000] text-base font-semibold'>4.4</div>
-                <div className='text-[#494952] text-sm font-medium'>( 3,090 Reviews )</div>
-              </div>
+              <StarRating rating={3.7}/>
+             
             </div>
             <div className=''>
               <div className='text-[#77777e] text-sm font-medium'>MRP : <span className='text-[#77777e] font-medium line-through text-sm'>₹{MRP}</span></div>
             </div>
-            <div className='flex gap-2'>
+            <div className='flex gap-2 items-center'>
               <div className='text-[#1c1c28] text-base font-semibold'>Price: <span className='text-xl'>₹{SP}</span></div>
-              <div className='text-[#00a856] text-sm font-semibold'>25% Off</div>
+              <div className='text-[#00a856] text-sm font-semibold'>{discountPercent}% Off</div>
             </div>
             <span className='text-[#00a856] font-medium text-xs'>Inclusive of all taxes</span>
             <div className='my-3'>
