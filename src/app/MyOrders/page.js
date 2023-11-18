@@ -1,17 +1,21 @@
 'use client'
 
 import React, { useEffect, useState } from "react";
-import { getDocuments } from "@/firebase/getData";
+import { getDocuments, getDocumentsbyFilter } from "@/firebase/getData";
 import OrderCard from "./OrderCard"
+import { useAuthContext } from "@/context/AuthContext";
+
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
   const [expandedOrder, setExpandedOrder] = useState(null);
+  const { user } = useAuthContext()
 
   useEffect(() => {
     async function fetchOrders() {
-      const { result, error } = await getDocuments("orders");
+      const { result, error } = await getDocumentsbyFilter("orders","user.userId",user.uid );
       if (error) return console.log(error);
+      console.log(result)
       setOrders(result);
     }
     fetchOrders();

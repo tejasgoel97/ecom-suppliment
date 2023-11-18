@@ -50,7 +50,7 @@ function LoginForm() {
   React.useEffect(() => {
     if (user !== null) router.push("/")
   }, [user])
-i
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-primary to-primary-lite">
       <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">

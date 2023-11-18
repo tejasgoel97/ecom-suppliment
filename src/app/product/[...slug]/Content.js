@@ -22,6 +22,9 @@ const Image = [
 function ProductNewComponent(props) {
 
     const {product, variant, subVariant, MRP , SP, id} = props;
+    if(!product.images || product.images.length){
+      product.images = []
+    }
     const allImages = [{imgUrl:product.featureImage, altText:product.featureImage}, ...product.images]
     console.log(allImages)
     const productDisplayName = `${product.productName}, ${variant}, ${subVariant}`
@@ -36,7 +39,7 @@ function ProductNewComponent(props) {
             <div className='text-primary font-semibold text-sm'>{product.subCategory}</div>
             <div className='text-[#1c1c28] font-semibold text-2xl leading-normal'>{productDisplayName}</div>
             <div className='flex items-center gap-2 my-1 text-[#77777e] font-medium -mt-1 mb-3'>
-              By <span className='text-primary font-semibold'>{product.brand.value}</span>
+              By <span className='text-primary font-semibold'>{product.brand}</span>
               <img className='pt-1 -z-20' src="https://static1.hkrtcdn.com/hknext/static/media/pdp/arrow-right-blue.svg" />
             </div>
             <div className='flex items-center mb-3 gap-2'>

@@ -10,7 +10,9 @@ export default function Example(props) {
     const currentAddress = order.currentAddress
     if (orderDate) {
         var dateValue = orderDate.toDate();
-        var formattedDate = dateValue.toLocaleString();
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+
+        var formattedDate = dateValue.toLocaleString('en-US', options);
     }
     else {
         formattedDate = "no Datr"
@@ -49,8 +51,8 @@ export default function Example(props) {
                             </div>
                         </Disclosure.Button>
                         <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
-                            <div className='grid grid-cols-6 border-r'>
-                                <div className='col-span-4 border-r-2 border-gray-300'>
+                            <div className='grid md:grid-cols-6 border-r'>
+                                <div className='md:col-span-4 md:border-r-2 border-gray-300'>
                                     {order.cart.map((item, itemIndex) => (
                                         <div key={itemIndex} className="flex items-center py-1 border-b">
                                             <img
@@ -69,7 +71,7 @@ export default function Example(props) {
                                         </div>
                                     ))}
                                 </div>
-                                <div className='col-span-2 m-3'>
+                                <div className='md:col-span-2 m-3'>
                                     <div>
                                         <span className='font-bold'>
                                         Delivered To: 
