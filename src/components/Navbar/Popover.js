@@ -77,7 +77,7 @@ export default function Example(props) {
                                     href={item.slug? item.slug: ""}
                                     className="-m-3 flex items-center rounded-lg p-1 bg-red-100 transition duration-150 ease-in-out hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 cursor-pointer"
                                 >
-                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12">
+                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12 overflow-hidden rounded-sm">
                                         {/* <item.icon aria-hidden="true" /> */}
                                         <img src={item.imageUrl}/>
                                     </div>

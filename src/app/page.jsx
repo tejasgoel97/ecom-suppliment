@@ -11,7 +11,7 @@ async function fetchBrandData() {
 
 export default async function Home() {
 
-  const networkImageUrl = 'https://img6.hkrtcdn.com/30048/bnr_3004765_o.jpg';
+  const networkImageUrl = 'https://assets.ajio.com/cms/AJIO/WEB/D-1.0-UHP-21112023-MainBannerDailyChanging-Z1-P7-TOGCFortCollins-min45.jpg';
   const { result, error } = await fetchBrandData()
   let brands = [];
   let categories = []
@@ -23,8 +23,9 @@ export default async function Home() {
     if (categoriesObj) categories = categoriesObj.categories;
   }
   console.log(categories)
+  console.log(brands)
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between py-24">
+    <main className="flex min-h-screen flex-col items-center justify-between py-12">
       <div className="relative">
         <img
           src={networkImageUrl}
@@ -32,13 +33,22 @@ export default async function Home() {
           className="object-cover object-center h-full w-full"
         />
       </div>
-      <CardList />
-      <div className="bg-secondary w-full">
-        <h1 className="font-sans text-lg p-2">Shop By Brands</h1>
+      <CardList value={1}/>
+      <div className="bg-secondary w-full container p-3">
+        <div className="container">
+        <img
+          src={"https://assets.ajio.com/cms/AJIO/WEB/D-1.0-UHP-25102023-Trust%20Marker.jpg"}
+          alt="Banner"
+          className="object-cover object-center h-full w-full"
+        />
+        </div>
+        <h1 className="font-sans text-lg p-2 font-bold">Popular Brands</h1>
         <div className="p-2">
-          <AllBrands />
+          <AllBrands brands={brands}/>
         </div>
       </div>
+      <CardList value={2}/>
+
       
       
     </main>

@@ -6,6 +6,8 @@ import { CartProvider } from "@/context/CartContext";
 import { OrderProvider } from "@/context/OrderContext";
 
 import Navbar from "@/components/Navbar/index";
+import { MetaDataContextProvider } from "@/context/MetaDataContext";
+
 
 export default function RootLayout({
   children,
@@ -20,6 +22,8 @@ export default function RootLayout({
       */}
       <head />
       <body>
+      <MetaDataContextProvider>
+
         <AuthContextProvider>
           <CartProvider>
             <OrderProvider>
@@ -29,6 +33,8 @@ export default function RootLayout({
             </OrderProvider>
           </CartProvider>
         </AuthContextProvider>
+        </MetaDataContextProvider>
+
       </body>
     </html>
   );

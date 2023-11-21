@@ -65,7 +65,7 @@ const CartSelector = (props) => {
 
   return (
     <>
-      <div className="md:flex gap-4 mb-8 hidden">
+      <div className="flex gap-4 mb-8">
         {quantity ===  0 ? (
           <div
             className="flex justify-center items-center gap-2 cursor-pointer bg-[#fff9f4] px-4 py-2 border border-[#ff8914] rounded-lg "
@@ -77,23 +77,35 @@ const CartSelector = (props) => {
             </span>
           </div>
         ) : (
-          <div className="flex items-center justify-center border border-[#d6d6d6] rounded-md w-24 cursor-pointer ">
+          <>
+          <div className="flex items-center justify-center ">
             <div
-              className="flex items-center justify-center rounded-l-md bg-[#f7f7f7] text-[#d8d8d8] h-full w-2/4"
+              className="flex justify-center items-center gap-2 cursor-pointer  px-4 py-2 border bg-[#ff8914] rounded-lg"
               onClick={quantity > 1 ? decrementQuantity : removeFromCart}
             >
               <span>-</span>
             </div>
-            <div className="flex items-center justify-center bg-[#d8d8d8] text-primary h-full px-3 w-2/4">
+            <div className="flex items-center justify-center  text-primary h-full px-4 w-2/4">
               {quantity}
             </div>
             <div
-              className="flex items-center justify-center  rounded-r-md  bg-[#f7f7f7] h-full w-2/4"
+              className="flex justify-center items-center gap-2 cursor-pointer  px-4 py-2 border bg-[#ff8914] rounded-lg"
               onClick={addToCart}
             >
               +
             </div>
+            
           </div>
+          <div
+          className="flex justify-center items-center gap-2 cursor-pointer bg-[#fff9f4] px-4 py-2 border border-[#ff8914] rounded-lg "
+          onClick={addToCart}
+        >
+          <img src="https://static1.hkrtcdn.com/hknext/static/media/pdp/Buy.svg" />
+          <span className="font-semibold text-base text-[#ff8914]">
+            View Cart
+          </span>
+        </div>
+        </>
         )}
         {/* <div className="flex justify-center items-center gap-2 cursor-pointer bg-[#ff8914] px-8 py-2 border border-[#ff8914] rounded-lg ">
           <span className="font-semibold text-base text-white">Quick Buy</span>

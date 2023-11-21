@@ -11,20 +11,23 @@ async function fetchBrandData(subCategory){
 }
 
 
-const BrandDropdown = () => {
-    const [brands, setBrands] = useState([])
+const BrandDropdown = (props) => {
 
-    useEffect(()=>{
-        async function formatbrands(){
-            let brands = await fetchBrandData();
+    const {brands} = props
+
+    // const [brands, setBrands] = useState([])
+
+    // useEffect(()=>{
+    //     async function formatbrands(){
+    //         let brands = await fetchBrandData();
             
-            console.log(brands)
-            setBrands(brands)
-        }
-        formatbrands()
-    },[])
+    //         console.log(brands)
+    //         setBrands(brands)
+    //     }
+    //     formatbrands()
+    // },[])
 
-    console.log(brands)
+    // console.log(brands)
 
     return <div className='flex gap-3'>
         

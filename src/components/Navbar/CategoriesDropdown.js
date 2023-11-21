@@ -10,35 +10,53 @@ async function fetchCategory(category){
 }
 
 
-const CartegoryDropdown = () => {
-    const [categories, setCategories] = useState([])
+const CartegoryDropdown = (props) => {
 
-    useEffect(()=>{
-        async function formatCategories(){
-            let categories = await fetchCategory();
-            console.log(categories)
-            categories= categories.map((cat)=>{
-                let options = cat.subCategories.map((subCat)=>{
-                    return {
-                        name: subCat.name,
-                        imageUrl: subCat.imgUrl,
-                        slug:`/subCategory/${subCat.name}`
-                    }
-                })
-                return {
-                    name: cat.name,
-                    options: options
-                }
+    let {categories} = props;
+    categories= categories.map((cat)=>{
+        let options = cat.subCategories.map((subCat)=>{
+            return {
+                name: subCat.name,
+                imageUrl: subCat.imgUrl,
+                slug:`/subCategory/${subCat.name}`
+            }
+        })
+        return {
+            name: cat.name,
+            options: options
+        }
+
+        
+    })
+
+    // const [categories, setCategories] = useState([])
+
+    // useEffect(()=>{
+    //     async function formatCategories(){
+    //         let categories = await fetchCategory();
+    //         console.log(categories)
+    //         categories= categories.map((cat)=>{
+    //             let options = cat.subCategories.map((subCat)=>{
+    //                 return {
+    //                     name: subCat.name,
+    //                     imageUrl: subCat.imgUrl,
+    //                     slug:`/subCategory/${subCat.name}`
+    //                 }
+    //             })
+    //             return {
+    //                 name: cat.name,
+    //                 options: options
+    //             }
 
                 
-            })
-            console.log(categories)
-            setCategories(categories)
-        }
-        formatCategories()
-    },[])
+    //         })
+    //         console.log(categories)
+    //         setCategories(categories)
+    //     }
+    //     formatCategories()
+    // },[])
 
-    console.log(categories)
+    // console.log(categories)
 
     return <div className='flex gap-3'>
         {categories.map((cat)=>{
