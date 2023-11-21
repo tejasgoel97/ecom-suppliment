@@ -18,8 +18,8 @@ const RelatedProducts = ({product}) => {
     return <div className="bg-white shadow-xl">
         <h1>Similar Products</h1>
         <div className="overflow-x-scroll flex gap-3">
-            {productList.map((product)=>{
-                return <div className="w-screen">
+            {productList.map((product, index)=>{
+                return <div className="w-screen" key={index}>
                     <ProductCard product={product} />
                     </div>
             })}

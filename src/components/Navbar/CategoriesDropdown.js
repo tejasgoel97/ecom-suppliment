@@ -60,7 +60,7 @@ const CartegoryDropdown = (props) => {
 
     return <div className='flex gap-3'>
         {categories.map((cat)=>{
-            return <Popover name={cat.name} options={cat.options}/>
+            return <Popover key={cat.name} name={cat.name} options={cat.options}/>
         })}
         {/* <Popover category={category}/>
       <Popover category={category}/> */}
