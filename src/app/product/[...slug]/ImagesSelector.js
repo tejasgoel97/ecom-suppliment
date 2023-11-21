@@ -72,7 +72,7 @@ const ImageSelector = (props) => {
             {
               productBenefits.map((i) => {
                 return (
-                    <div className='text-center' key={Item.benefitName}>
+                    <div className='text-center' key={i.benefitName}>
                       <div className='text-[#77777d] text-xs font-medium py-1'>{i.benefitName}</div>
                       <div className='text-[#494952] text-xl font-semibold'>{i.benefitGram}</div>
                     </div>
