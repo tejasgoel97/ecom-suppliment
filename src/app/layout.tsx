@@ -1,10 +1,18 @@
-'use client'
-import React from 'react'
-import './globals.css'
-import { AuthContextProvider } from '@/context/AuthContext'
+"use client";
+import React from "react";
+import "./globals.css";
+import { AuthContextProvider } from "@/context/AuthContext";
+import { CartProvider } from "@/context/CartContext";
+import { OrderProvider } from "@/context/OrderContext";
 
-export default function RootLayout({ children }:{
-  children: React.ReactNode
+import Navbar from "@/components/Navbar/index";
+import { MetaDataContextProvider } from "@/context/MetaDataContext";
+
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -14,10 +22,20 @@ export default function RootLayout({ children }:{
       */}
       <head />
       <body>
+      <MetaDataContextProvider>
+
         <AuthContextProvider>
-          {children}
+          <CartProvider>
+            <OrderProvider>
+
+            <Navbar />
+            {children}
+            </OrderProvider>
+          </CartProvider>
         </AuthContextProvider>
+        </MetaDataContextProvider>
+
       </body>
     </html>
-  )
+  );
 }
