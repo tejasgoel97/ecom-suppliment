@@ -18,7 +18,7 @@ const VariantSelector = (props) => {
       </div>
       <div className='flex flex-wrap gap-2 items-center text-center cursor-pointer'>
         {variants.map((v)=>{
-            return <Link href={`/product/${id}/${v.name}`}>
+            return <Link href={`/product/${id}/${v.name}`} key={v.name}>
                 <div className={`items-center text-center border ${variant === v.name ? "bg-[#ff8914] text-white" : "border-[#ff8914] bg-[#fff9f4] text-[#1c1c28]"} px-5 py-1 rounded w-max`}>
             <div className='text-[#1c1c28] text-sm font-medium'>{v.name}</div>
             {/* <div className='text-[#77777d] text-xs font-normal'>₹4099</div> */}
@@ -37,7 +37,7 @@ const VariantSelector = (props) => {
       
       <div className='flex flex-wrap gap-2 items-center text-center cursor-pointer'>
       {subVarOptions.map((subVar)=>{
-        return <Link href={`/product/${id}/${variant}/${subVar.name}`}>
+        return <Link href={`/product/${id}/${variant}/${subVar.name}`} key={subVar.name}>
                 <div className={`items-center text-center border ${subVariant === subVar.name ? "bg-[#ff8914] text-white" : "border-[#ff8914] bg-[#fff9f4] text-[#1c1c28]"} px-5 py-1 rounded w-max`}>
         <div className='text-[#1c1c28] text-sm pt-1 font-medium'>{subVar.name}</div>
       </div>

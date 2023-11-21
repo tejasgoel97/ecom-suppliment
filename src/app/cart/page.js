@@ -128,7 +128,7 @@ function CartComponent() {
                 const quantity = item?.quantity || 0;
 
                 return (
-                  <div className="flex justify-between border rounded-md border-gray-200 p-6 mb-5">
+                  <div className="flex justify-between border rounded-md border-gray-200 p-6 mb-5" key={itemDisplayName}>
                     <div className="flex gap-2">
                       <div className="items-center justify-center w-20">
                         <img src={item.imgUrl} />

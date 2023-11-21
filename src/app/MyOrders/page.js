@@ -33,7 +33,7 @@ const MyOrders = () => {
     <div className="container mx-auto max-w-5xl  my-4 p-4 ">
       <h1 className="text-3xl font-semibold mb-6">My Orders</h1>
         {orders.map((order, index) => {
-            return <div>
+            return <div key={index}>
                 <OrderCard order={order} index={index}/>
                 </div>
         })}

@@ -135,6 +135,7 @@ function ProductPage(props) {
         {subForms.map((item) => {
           return (
             <div
+            key={item.name}
               className="text-center cursor-pointer col-span-1"
               onClick={() => {
                 if (type === "ALL_CATEGORY") {
@@ -180,7 +181,7 @@ function ProductPage(props) {
           const MRP = i.variants[0].subvariants[0].MRP
           return (
 
-            <ProductCard product = {i}/>
+            <ProductCard product = {i} key={productName}/>
 
           );
         })}
